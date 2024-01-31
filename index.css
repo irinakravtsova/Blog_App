@@ -1,0 +1,118 @@
+body {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  color: #000
+}
+h1 {
+  text-align: center;
+  font-size: 56px;
+  font-weight: 700;
+line-height: normal;
+}
+h2 {
+  margin-bottom: 60px;
+  font-size: 40px;
+  font-weight: 700;
+line-height: normal;
+}
+.blog {
+  max-width: 1400px;
+  margin: 0 auto;
+ 
+}
+.blog__inner {
+  padding: 102px 123px 0 217px;
+  display: flex;
+  gap: 100px;
+}
+.form__wrapper {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.new-post-btn,
+.post-title-input,
+.post-text-input {
+  font-size: 32px;
+  font-weight: 400;
+line-height: 39px;
+}
+.post-title-input {
+
+   padding: 11px 0 11px 20px;
+  border: 1px solid #000;
+
+}
+.post-text-input {
+padding: 11px 0 200px 20px;
+  border: 1px solid #000;
+}
+
+.new-post-btn {
+  display: inline-block;
+padding-top: 9px;
+padding-bottom: 12px;
+width: 100%;
+background-color: #0094FF;
+}
+.new-post-btn:active,
+.new-post-btn:hover {
+  background-color: #748793; 
+}
+.new-post-btn:disabled {
+  cursor: default;
+
+ opacity: 0.5;
+}
+/* input:invalid,
+textarea:invalid {
+  border: 2px dashed red;
+}
+
+input:valid,
+textarea:valid {
+  border: 2px solid black;
+} */
+
+
+.validationMessage {
+  margin-top: 20px;
+  color: red;
+} 
+
+.validationMessage_hidden {
+  display: none;
+}
+.post {
+  margin-bottom: 50px;
+  max-width: 500px;
+}
+.blog__posts {
+  display: flex;
+  flex-direction: column;
+ 
+}
+.post {
+  max-width: 500px;
+}
+.post__date {
+  margin-bottom: 15px;
+  font-size: 25px;
+  line-height: 30px;
+  color: #0094FF;
+}
+.post__title {
+margin-bottom: 15px;
+  font-size: 32px;
+  font-weight: 700;
+line-height: 39px;
+}
+
+.post__text {
+  display: block;
+  font-size: 25px;
+  font-weight: 400;
+line-height: 30px;
+max-width: 500px;
+}

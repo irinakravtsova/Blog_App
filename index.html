@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Blog App</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="blog">
+      <h1>Приложение блог</h1>
+      <div class="blog__inner">
+        <div class="blog__form">
+          <h2>Новый пост</h2>
+          <form class="js-form__wrapper form__wrapper">
+            <input
+              class="js-post-title-input post-title-input"
+              type="text"
+              required
+              placeholder="Заголовок"
+             
+            />
+            <!-- required - атрибут, вызывает сообщение о том, что поле должно быть заполнено -->
+      <!-- <input   class="js-post-text-input post-text-input"
+      type="text"
+      placeholder="Напиши пост"
+      required > -->
+            <textarea
+              class="js-post-text-input post-text-input"
+              type="text"
+              placeholder="Напиши пост"
+              required 
+          
+            ></textarea>
+    
+          </form>
+          <button class="js-new-post-btn new-post-btn" >Опубликовать</button>
+          <div
+          id="validationMessage"
+          class="validationMessage validationMessage_hidden"
+        ></div>
+          
+         
+        </div>
+        <div class="blog__posts">
+          <h2>Лента</h2>
+
+          <div class="js-posts posts">Лента пуста...</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
