@@ -36,8 +36,8 @@
 
 const posts = [];
 
-const TITLE_VALIDATHION_LIMIT = 20;
-const TEXT_VALIDATHION_LIMIT = 100;
+const TITLE_VALIDATHION_LIMIT = 10;
+const TEXT_VALIDATHION_LIMIT = 20;
 
 
 const postTitleInputNode = document.querySelector(".js-post-title-input");
@@ -45,7 +45,8 @@ const postTextInputNode = document.querySelector(".js-post-text-input");
 const newPostBtnNode = document.querySelector(".js-new-post-btn");
 const postsNode = document.querySelector(".js-posts");
 const validationMessage = document.getElementById("validationMessage");
-const form = document.querySelector(".js-form__wrapper");
+const titleCountSumbol = document.querySelector(".title__countSumbol");
+const textCountSumbol = document.querySelector(".text__countSumbol");
 
 newPostBtnNode.setAttribute('disabled', true);
 
@@ -62,6 +63,8 @@ addPost(postFromUser);//2.добавь полученные данные в ви
 renderPosts(); //отобрази 
 
 clearForm(); //очисти инпуты
+
+
 
 });
 // создаем переменную post (в дальнейшем объект (заголовок+пост). в дальнейшем массив постов/ОНА В САМОМ НАЧАЛЕ, ПЕРЕД ВСЕМИ КОНСТАНТАМИ). ПРИСВАИВАЕМ ЕЙ ЗНАЧЕНИЕ, КОТОРОЕ ПЕРЕДАЛИ В ИНПУТЕ:
@@ -99,37 +102,91 @@ postTextInputNode.addEventListener('input', validation);
 // ВАЛИДАЦИЯ ОДНОЙ ФУНКЦИЕЙ (2 ПРОВЕРКИ. сначала по длине заголовка, потом по длине текста)
 // создаем 2 переменных, в каждой из которых записана длина (количество символов), условие: если заголовок длиннее чем лимит, то остановка (логика от плохого, если превышен, то сообщение, если не превышен, то сообщения нет)
 function validation() {
-  const titlelen = postTitleInputNode.value.length;
-  const textlen = postTextInputNode.value.length;
+  let titleLen = postTitleInputNode.value.length;
+  let textLen = postTextInputNode.value.length;
    
-  if (titlelen < 3 ) {
-    validationMessage.innerText = `Длина заголовка не может быть меньше 3  символов`;
-    validationMessage.classList.remove('validationMessage_hidden');
-    newPostBtnNode.setAttribute('disabled', true);
-    return;
-  }
+  // if (titleLen < 1 ) {
+  //   validationMessage.innerText = `Напиши заголовок`;
+  //   validationMessage.classList.remove('validationMessage_hidden');
+  //   newPostBtnNode.setAttribute('disabled', true);
+  //   return;
+  // }
 
-  if (titlelen > TITLE_VALIDATHION_LIMIT) {
-    validationMessage.innerText = `Длина заголовка не должна превышать ${TITLE_VALIDATHION_LIMIT} символов`;
-    validationMessage.classList.remove('validationMessage_hidden');
-    newPostBtnNode.setAttribute('disabled', true);
-    return;
-  }
-
- 
-  if (textlen > TEXT_VALIDATHION_LIMIT) {
-    validationMessage.innerText = `Длина текста не должна превышать ${TEXT_VALIDATHION_LIMIT} символов`;
-    validationMessage.classList.remove('validationMessage_hidden');
-    newPostBtnNode.setAttribute('disabled', true);
-    return;
-  }
+  // if (titleLen > TITLE_VALIDATHION_LIMIT) {
+  //   // validationMessage.innerText = `Длина заголовка не должна превышать ${TITLE_VALIDATHION_LIMIT} символов`;
+  //   // validationMessage.classList.remove('validationMessage_hidden');
+  //   newPostBtnNode.setAttribute('disabled', true);
+  //   return;
+  // }
 
  
-  validationMessage.classList.add('validationMessage_hidden');
-   newPostBtnNode.removeAttribute('disabled');
+  // if (textLen > TEXT_VALIDATHION_LIMIT) {
+  //   // validationMessage.innerText = `Длина текста не должна превышать ${TEXT_VALIDATHION_LIMIT} символов`;
+  //   // validationMessage.classList.remove('validationMessage_hidden');
+  //   newPostBtnNode.setAttribute('disabled', true);
+  //   return;
+  // }
+
+  // if (textLen < 1 ) {
+  //   validationMessage.innerText = `Напиши сообщение `;
+  //   validationMessage.classList.remove('validationMessage_hidden');
+  //   newPostBtnNode.setAttribute('disabled', true);
+  //   return;
+  // }
+  
+  // validationMessage.classList.add('validationMessage_hidden');
+  //  newPostBtnNode.removeAttribute('disabled');
  
 }
 
+function countSumbolTitle() {
+  let titleLen = postTitleInputNode.value.length;
+  let countSumbolTitle =  TITLE_VALIDATHION_LIMIT -  titleLen;  
+ 
+  if (titleLen <= TITLE_VALIDATHION_LIMIT) {
+    document.querySelector(".title__countSumbol").innerHTML = "можешь ещё добавить ещё" + " " + countSumbolTitle + " " + "символов";
+    newPostBtnNode.setAttribute('disabled', true);
+  }
+  else {
+    document.querySelector(".title__countSumbol").innerHTML = "длина заголовка не должна превышать" + " "+ TITLE_VALIDATHION_LIMIT+" "+ "символов";
+  };
+}
+
+  function countSumbolText() {
+   
+    let textLen = postTextInputNode.value.length;
+    let countSumbolText =  TEXT_VALIDATHION_LIMIT -  textLen; 
+         
+    if (textLen <= TEXT_VALIDATHION_LIMIT) {
+      document.querySelector(".text__countSumbol").innerHTML = "можешь ещё добавить ещё" + " " + countSumbolText + " " + "символов";
+      newPostBtnNode.removeAttribute('disabled');
+    }
+    else {
+      document.querySelector(".text__countSumbol").innerHTML = "длина сообщения не должна превышать" + " " + TEXT_VALIDATHION_LIMIT + " " + "символов"; 
+      newPostBtnNode.setAttribute('disabled', true);
+    }
+  // let countSumbolTitle =  TITLE_VALIDATHION_LIMIT -  postTitleInputNode.value.length;  
+  // let countSumbolText =  TEXT_VALIDATHION_LIMIT -  postTextInputNode.value.length;  
+  // // console.log(countSumbolText);
+ 
+ 
+  // if (countSumbolTitle >= 0) {
+  //   document.querySelector(".title__countSumbol").innerHTML = "можешь ещё добавить ещё" + " " + countSumbolTitle + " " + "символов";
+  // }else {
+  //   document.querySelector(".title__countSumbol").innerHTML = "длина заголовка не должна превышать" + " "+ TITLE_VALIDATHION_LIMIT+" "+ "символов";
+  // }
+  
+  // if (countSumbolText >= 0) {
+  //   document.querySelector(".text__countSumbol").innerHTML = "можешь ещё добавить ещё" + " " + countSumbolTitle + " " + "символов";
+  // }else {
+  //   document.querySelector(".text__countSumbol").innerHTML = "длина сообщения не должна превышать" + " " + TEXT_VALIDATHION_LIMIT + " " + "символов";
+  // }
+
+
+ 
+ 
+  // document.querySelector(".text__countSumbol").innerHTML = "можешь ещё добавить ещё" + " " + countSumbolText + " " + "символов";
+}
 //1. создаем функцию которая возвращает пост/объект(заголовок + текст)
 //создаем переменную, которая создается из содержимого переменной postTitleInputNode и возвращается в виде объекта заголовок + текст
 function getPostFromUser() {
@@ -212,6 +269,9 @@ posts.forEach(post => { //на каждой итерации цикла дела
 function clearForm() {
   postTitleInputNode.value = '';
   postTextInputNode.value = '';
+  titleCountSumbol.innerHTML = '';
+  textCountSumbol.innerHTML = '';
+
   newPostBtnNode.setAttribute('disabled', true);
 }
 

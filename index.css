@@ -39,15 +39,24 @@ line-height: normal;
 line-height: 39px;
 }
 .post-title-input {
-
    padding: 11px 0 11px 20px;
   border: 1px solid #000;
-
+}
+.post-title-input:focus,
+.post-text-input:focus {
+ background-color: #e0e8ed;
+ border: 2px solid #000;
 }
 .post-text-input {
 padding: 11px 0 200px 20px;
   border: 1px solid #000;
-}
+  resize: none;
+ }
+ .title__countSumbol,
+ .text__countSumbol {
+  color: red;
+ }
+
 
 .new-post-btn {
   display: inline-block;
@@ -76,14 +85,14 @@ textarea:valid {
 } */
 
 
-.validationMessage {
+/* .validationMessage {
   margin-top: 20px;
   color: red;
 } 
 
 .validationMessage_hidden {
   display: none;
-}
+} */
 .post {
   margin-bottom: 50px;
   max-width: 500px;
