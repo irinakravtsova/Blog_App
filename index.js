@@ -15,39 +15,28 @@ const textCountSumbol = document.querySelector(".text__countSumbol");
 
 newPostBtnNode.setAttribute('disabled', true);
 
-let titleLen = postTitleInputNode.value.length;
-let textLen = postTextInputNode.value.length;
-let countTitle =  TITLE_VALIDATHION_LIMIT -  titleLen;  
-let countText =  TEXT_VALIDATHION_LIMIT -  textLen; 
-console.log(titleLen);
-
-function activeButton() {}
 
 function countSumbolTitle() {
-  let titleLen = postTitleInputNode.value.length;
-  let countSumbolTitle =  TITLE_VALIDATHION_LIMIT -  titleLen;  
+  const titleLen = postTitleInputNode.value.length;
+  const countSumbolTitle =  TITLE_VALIDATHION_LIMIT -  titleLen;
+  const messageTitle = "можешь ещё добавить ещё" + " " + countSumbolTitle + " " + "символов";
+
  
   if (titleLen <= TITLE_VALIDATHION_LIMIT) {
-    document.querySelector(".title__countSumbol").innerHTML = "можешь ещё добавить ещё" + " " + countSumbolTitle + " " + "символов";
-    newPostBtnNode.setAttribute('disabled', true);
+    titleCountSumbol.innerHTML = messageTitle;
   }
-  else {
-    document.querySelector(".title__countSumbol").innerHTML = "длина заголовка не должна превышать" + " "+ TITLE_VALIDATHION_LIMIT+" "+ "символов";
-  };
 }
 
   function countSumbolText() {
    
-    let textLen = postTextInputNode.value.length;
-    let countSumbolText =  TEXT_VALIDATHION_LIMIT -  textLen; 
+    const textLen = postTextInputNode.value.length;
+    const countSumbolText =  TEXT_VALIDATHION_LIMIT -  textLen; 
+    const messageText = "можешь ещё добавить ещё" + " " + countSumbolText + " " + "символов";
+   
          
     if (textLen <= TEXT_VALIDATHION_LIMIT) {
-      document.querySelector(".text__countSumbol").innerHTML = "можешь ещё добавить ещё" + " " + countSumbolText + " " + "символов";
+     textCountSumbol.innerHTML = messageText;
       newPostBtnNode.removeAttribute('disabled');
-    }
-    else {
-      document.querySelector(".text__countSumbol").innerHTML = "длина сообщения не должна превышать" + " " + TEXT_VALIDATHION_LIMIT + " " + "символов"; 
-      newPostBtnNode.setAttribute('disabled', true);
     }
   }
 
@@ -66,8 +55,12 @@ newPostBtnNode.addEventListener('click', function() {
 
 function getPostFromUser() {
   //получи данные из postTitleInputNode и postTextInputNode
-  const title = postTitleInputNode.value;
-  const text = postTextInputNode.value;
+  const titlestring = postTitleInputNode.value;
+  const title = titlestring.trim();
+
+  const textstring = postTextInputNode.value;
+  const text = textstring.trim();
+
 
   return {
     title: title,
