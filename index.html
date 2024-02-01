@@ -24,33 +24,25 @@
             <input
               class="js-post-title-input post-title-input"
               type="text"
+              minlength="3" maxlength="10"
               oninput="countSumbolTitle()"
               required
               placeholder="Заголовок"
               />
               <p class="title__countSumbol"></p>
-            <!-- required - атрибут, вызывает сообщение о том, что поле должно быть заполнено -->
-      <!-- <input   class="js-post-text-input post-text-input"
-      type="text"
-      placeholder="Напиши пост"
-      required > -->
+ 
             <textarea
               class="js-post-text-input post-text-input"
               type="text"
+              minlength="3" maxlength="20"
               placeholder="Напиши пост"
               oninput="countSumbolText()"
               required 
             ></textarea>
             <p class="text__countSumbol"></p>
-    
+            <button class="js-new-post-btn new-post-btn">Опубликовать</button>
           </form>
-          <button class="js-new-post-btn new-post-btn" disabled >Опубликовать</button>
-          <div
-          id="validationMessage"
-          class="validationMessage validationMessage_hidden"
-        ></div>
-          
-         
+   
         </div>
         <div class="blog__posts">
           <h2>Лента</h2>
